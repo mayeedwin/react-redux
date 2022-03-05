@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import {
   decrement,
   increment,
@@ -7,52 +8,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../redux";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-
-// Message component...
-const Message = ({
-  message,
-  photos,
-}: {
-  message: string;
-  photos: {
-    id: number;
-    title: string;
-    url: string;
-    thumbnailUrl: string;
-  }[];
-}) => {
-  return (
-    <h1 className="message">
-      {message} ({photos.length})
-    </h1>
-  );
-};
-
-// Map component...
-const mapStateToProps = (
-  state: {
-    photos: {
-      data: {
-        id: number;
-        title: string;
-        url: string;
-        thumbnailUrl: string;
-      }[];
-    };
-  },
-  ownState: {
-    message: string;
-  }
-) => {
-  return {
-    photos: state.photos.data,
-    ...ownState,
-  };
-};
-
-const MessageComponent = connect(mapStateToProps)(Message);
+import { Message } from "../components";
 
 const HomePage = () => {
   // State...
@@ -105,7 +61,7 @@ const HomePage = () => {
         </button>
       </div>
       <section>
-        <MessageComponent message="Welcome to the Photo Gallery!" />
+        <Message message="Welcome to the Photo Gallery!" />
         <section className="photos">
           {" "}
           {photos &&

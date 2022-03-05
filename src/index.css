@@ -12,7 +12,7 @@ body {
 .home-page,
 .about-page {
   height: 100vh;
-  padding: 75px;
+  padding: 25px 20px;
   max-width: 800px;
   margin: 0 auto;
 }

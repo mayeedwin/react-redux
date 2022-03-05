@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Message } from "../components";
 import { useAppSelector } from "../redux";
 
 const AboutPage = () => {
+  // Router...
+  const navigate = useNavigate()
   // Redux state...
   const { count, photos } = useAppSelector((state) => {
     return {
@@ -11,15 +14,17 @@ const AboutPage = () => {
   });
   return (
     <section className="about-page">
-      <div>
-        <h1>About</h1>
+     <section>
+     <Message message="About Page" />
         <Link to="/">Home</Link>
-        <p>
-          This is the TodoList app v1.0.0. It is part of a React crash course
-        </p>
         <p>Testing redux count : {count}</p>
         <p>Number of photos loaded : {[photos]}</p>
-      </div>
+     </section>
+     <section>
+       <Button onClick={() => navigate('/')}>
+          <Link to="/about">About</Link>
+       </Button>
+     </section>
     </section>
   );
 };
