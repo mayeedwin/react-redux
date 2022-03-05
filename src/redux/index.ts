@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { counterReducer, increment, decrement } from "./reducers/counter";
-import { photosReducer, setPhotos } from "./reducers/photos";
+import { counterReducer, increment, decrement } from "./src/counter";
+import { photosReducer, setPhotos } from "./src/photos";
 // Redux store...
 const store = configureStore({
   reducer: {
