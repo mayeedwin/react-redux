@@ -4,7 +4,7 @@ import { useAppSelector } from "../redux";
 
 const AboutPage = () => {
   // Router...
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // Redux state...
   const { count, photos } = useAppSelector((state) => {
     return {
@@ -14,17 +14,15 @@ const AboutPage = () => {
   });
   return (
     <section className="about-page">
-     <section>
-     <Message message="About Page" />
+      <section>
         <Link to="/">Home</Link>
         <p>Testing redux count : {count}</p>
         <p>Number of photos loaded : {[photos]}</p>
-     </section>
-     <section>
-       <Button onClick={() => navigate('/')}>
-          <Link to="/about">About</Link>
-       </Button>
-     </section>
+      </section>
+      <section>
+        <Message message="Hello about page!" />
+        <Button onClick={() => navigate("/")}>Go to Home</Button>
+      </section>
     </section>
   );
 };

@@ -7,18 +7,24 @@ const StyledButton = styled.button`
   border-radius: 4px;
   color: #555;
   cursor: pointer;
+  padding: 8px 16px;
+  text-align: center;
+  &:hover {
+    background: black;
+    color: white;
+  }
 `;
 
 // Button component...
 const Button = ({
+  children,
   onClick,
-  label = "Button",
 }: {
   children: React.ReactNode;
   onClick: () => void;
   label?: string;
 }) => {
-  return <StyledButton onClick={onClick}>{label}</StyledButton>;
+  return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
 export default Button;
