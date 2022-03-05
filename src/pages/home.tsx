@@ -1,13 +1,5 @@
-import { useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import {
-  decrement,
-  increment,
-  setPhotos,
-  useAppDispatch,
-  useAppSelector,
-} from "../redux";
+import { decrement, increment, useAppDispatch, useAppSelector } from "../redux";
 import { Message } from "../components";
 
 const HomePage = () => {
@@ -27,20 +19,6 @@ const HomePage = () => {
     event.preventDefault();
     type === "increment" ? dispatch(increment()) : dispatch(decrement());
   };
-
-  // Effects...
-  useEffect(() => {
-    // Fetches photos from an API, or other source...
-    // Photos are stored in the Redux store...
-    axios
-      .get("https://jsonplaceholder.typicode.com/photos")
-      .then((response) => {
-        dispatch(setPhotos(response.data.slice(0, 25)));
-      })
-      .catch((error) => {
-        // Handle error...
-      });
-  }, [dispatch]);
 
   return (
     <section className="home-page">
