@@ -21,6 +21,7 @@ const AboutPage = () => {
       </section>
       <section>
         <Message message="Hello about page!" />
+        <p>The button below is a styled component</p>
         <Button onClick={() => navigate("/")}>Go to Home</Button>
       </section>
     </section>
