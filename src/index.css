@@ -12,8 +12,9 @@ body {
 .home-page,
 .about-page {
   height: 100vh;
-  background-color: #fafafa;
   padding: 75px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .home-page h1 {

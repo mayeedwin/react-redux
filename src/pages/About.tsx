@@ -6,7 +6,7 @@ const AboutPage = () => {
   const { count, photos } = useAppSelector((state) => {
     return {
       count: state.counter.count,
-      photos: state.photos.photos.length,
+      photos: state.photos.data.length,
     };
   });
   return (

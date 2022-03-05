@@ -4,11 +4,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const photos = createSlice({
   name: "photos",
   initialState: {
-    photos: [],
+    data: [],
   },
   reducers: {
     setPhotos: (state, action) => {
-      state.photos = action.payload;
+      state.data = action.payload;
     },
   },
 });

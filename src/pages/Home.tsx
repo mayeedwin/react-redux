@@ -8,12 +8,57 @@ import {
   useAppSelector,
 } from "../redux";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+// Message component...
+const Message = ({
+  message,
+  photos,
+}: {
+  message: string;
+  photos: {
+    id: number;
+    title: string;
+    url: string;
+    thumbnailUrl: string;
+  }[];
+}) => {
+  return (
+    <h1 className="message">
+      {message} ({photos.length})
+    </h1>
+  );
+};
+
+// Map component...
+const mapStateToProps = (
+  state: {
+    photos: {
+      data: {
+        id: number;
+        title: string;
+        url: string;
+        thumbnailUrl: string;
+      }[];
+    };
+  },
+  ownState: {
+    message: string;
+  }
+) => {
+  return {
+    photos: state.photos.data,
+    ...ownState,
+  };
+};
+
+const MessageComponent = connect(mapStateToProps)(Message);
 
 const HomePage = () => {
   // State...
   const { photos, count } = useAppSelector((state) => {
     return {
-      photos: state.photos.photos,
+      photos: state.photos.data,
       count: state.counter.count,
     };
   });
@@ -41,13 +86,6 @@ const HomePage = () => {
       });
   }, [dispatch]);
 
-  useEffect(() => {
-    //...
-    if (photos) {
-      console.log(photos);
-    }
-  }, [photos]);
-
   return (
     <section className="home-page">
       <h1>Redux Counter : {count}</h1>
@@ -67,7 +105,7 @@ const HomePage = () => {
         </button>
       </div>
       <section>
-        <h2>Photos</h2>
+        <MessageComponent message="Welcome to the Photo Gallery!" />
         <section className="photos">
           {" "}
           {photos &&
